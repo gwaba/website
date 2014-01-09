@@ -1,4 +1,4 @@
-baseurl: ""
+baseurl: "/website"
 permalink: pretty
 markdown: rdiscount
 exclude: [Gemfile,Gemfile.lock,LICENSE,README.md]
