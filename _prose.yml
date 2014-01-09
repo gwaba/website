@@ -1,7 +1,7 @@
 prose:
   rooturl: '_posts'
-  siteurl: 'http://prose.io/starter'
-  relativeLinks: 'http://prose.io/starter/links.jsonp'
+  siteurl: 'http://gwaba.github.io'
+  relativeLinks: 'http://gwaba.github.io/links.jsonp'
   media: '_posts/media'
   metadata:
     _posts:
