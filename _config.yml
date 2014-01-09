@@ -4,6 +4,6 @@ markdown: rdiscount
 exclude: [Gemfile,Gemfile.lock,LICENSE,README.md]
 prose:
   rooturl: '_posts'
-  siteurl: 'http://gwaba.github.io'
-  relativeLinks: 'http://gwaba.github.io/links.jsonp'
+  siteurl: 'http://gwaba.github.io/website'
+  relativeLinks: 'http://gwaba.github.io/website/links.jsonp'
   media: '_posts/media'
