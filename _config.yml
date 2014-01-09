@@ -1,6 +1,7 @@
 baseurl: ""
 permalink: pretty
 markdown: rdiscount
+exclude: [Gemfile,Gemfile.lock,LICENSE,README.md]
 prose:
   rooturl: '_posts'
   siteurl: 'http://gwaba.github.io'
