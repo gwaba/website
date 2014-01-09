@@ -1,3 +1,25 @@
 baseurl: http://gwaba.github.io/
 permalink: pretty
 markdown: rdiscount
+prose:
+  rooturl: '_posts'
+  siteurl: 'http://gwaba.github.io'
+  relativeLinks: 'http://gwaba.github.io/links.jsonp'
+  media: '_posts/media'
+  metadata:
+    _posts:
+      - name: "category"
+        field:
+          element: "hidden"
+          value: "blog"
+      - name: "layout"
+          element: "layout"
+          value: "blog"
+      - name: "Title"
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "splash"
+          element: "text"
+          label: "Splash image"
+          value: ""
