@@ -53,9 +53,6 @@ table { border-collapse: collapse; border-spacing:0; }
 .splash-screen{
     text-align:center;
 }
-.splash-screen > h1:first-child {
-    margin-top:200px;
-}
 body{
     margin: 0;
     width: 100%;
