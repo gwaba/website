@@ -1,16 +1,105 @@
----
-layout: default
-section: blog
----
-
-<div class='listing col6 pad4h margin3'>
-  {% for item in site.categories.blog limit:1000 %}
-    {% capture date %}{{ item.date | date: '%B %Y' }}{% endcapture %}
-    {% capture ndate %}{{ item.next.date | date: '%B %Y' }}{% endcapture %}
-
-    {% if date != ndate %}
-      <h4 class='month'>{{item.date | date: '%B %Y'}}</h4>
-    {% endif %}
-    <a class='item' href='{{site.baseurl}}{{item.url}}'>{{item.title}} <span class='date'>&#126; {{item.date | date:"%b %d"}}</span></a>
-  {% endfor %}
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visit Willy Street</title>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel='shortcut icon' href='img/favicon.ico' type='image/x-icon' />
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700|PT+Sans+Caption:400,700" rel='stylesheet' type='text/css'/>
+  <link href='css/site.css' rel='stylesheet' />
+  <script src="js/lib/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript">var pixastic_parseonload = true;</script>
+  <script src='js/lib/pixastic.custom.js' style="text/javascript"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-S86-jd0ajD9_SeSywmvHZ-WzQbUcFEw&libraries=places&sensor=false" type="text/javascript"></script>
+  <script src='js/lib/markerwithlabel_packed.js' style="text/javascript"></script>
+  <script src='js/lib/infobox_packed.js' style="text/javascript"></script>
+  <script src='js/lib/date.js' style="text/javascript"></script>
+  <script src='js/site.js' tyle="text/javascript"></script>
+</head>
+<body>
+  <div id="header">
+    <div id="slideshow"></div>
+    <div class="container">
+      <a href="#" id="logo"><img src="img/logo_shadow.png" alt=""></a>
+    </div>
+  </div>
+  <div id="menu">
+    <div class="container">
+      <ul id="menu-list">
+        <li><a class="about" href="#">about</a></li>
+        <li><a class="directory" href="#">directory</a></li>
+        <li><a class="events" href="#">events</a></li>
+        <li><a class="membership" href="#">membership</a></li>
+        <li><a class="contact" href="#">contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container main">
+    <div class="headline about">
+      <div class="headline-interior">
+        <h1></h1>
+        <p></p>
+         <a target="_blank" class="explore-form">
+           <h3></h3>
+           <img src="img/explore.png">
+         </a>
+       </div>
+    </div>
+    <div class="headline membership">
+      <div class="headline-interior">
+        <h1></h1>
+        <p></p>
+        <a target="_blank" class="explore-form">
+          <h3></h3>
+          <img src="img/download.png">
+        </a>
+      </div>
+    </div>
+    <div class="headline contact">
+      <div class="headline-interior">
+        <h1></h1>
+        <h5></h5></br>
+         <ul></ul>
+       </div>
+    </div>
+    <div class="headline directory">
+        <h1>willy street directory</h1>
+        <ul class="directory-cat categories"></ul>
+        <div class="scroll-container">
+            <ul class="directory-list list"></ul>
+        </div>
+    </div>
+    <div class="headline events">
+      <h1>willy street events</h1>
+      <ul class="events-cat categories">
+          <li><a data-cat="january">january</a></li>
+          <li><a data-cat="april">april</a></li>
+          <li><a data-cat="july">july</a></li>
+          <li><a data-cat="october">october</a></li>
+          <li><a data-cat="february">february</a></li>
+          <li><a data-cat="may">may</a></li>
+          <li><a data-cat="august">august</a></li>
+          <li><a data-cat="november">november</a></li>
+          <li><a data-cat="march">march</a></li>
+          <li><a data-cat="june">june</a></li>
+          <li><a data-cat="september">september</a></li>
+          <li><a data-cat="december">december</a></li>
+      </ul>
+      <div class="scroll-container">
+          <ul class="events-list list"></ul>
+      </div>
+    </div>
+    <div id="map-canvas"></div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <ul>
+        <li>Greater Williamson Area Business Association</li>
+        <li>P.O. Box 3456</li>
+        <li><a href="tel:6081234567">608.123.4567</a></li>
+        <li><a href="mailto:info@visitwillystreet.com">info@visitwillystreet.com</a></li>
+      </ul>
+      <a target="_blank" href="http://zebradog.com" id="zd"></a>
+    </div>
+  </div>
+</body>
