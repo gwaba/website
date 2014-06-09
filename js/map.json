@@ -1,0 +1,82 @@
+[
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "elementType": "labels.icon",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape",
+    "stylers": [
+      { "hue": "#00fff7" },
+      { "gamma": 0.1 },
+      { "saturation": 83 },
+      { "lightness": 6 }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "visibility": "on" },
+      { "hue": "#00eeff" },
+      { "saturation": -13 },
+      { "lightness": -13 }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "geometry.fill",
+    "stylers": [
+      { "color": "#fef3e3" }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "color": "#52c2ba" },
+      { "lightness": -42 }
+    ]
+  },{
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "transit",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "elementType": "labels.text.fill",
+    "stylers": [
+      { "color": "#207278" },
+      { "lightness": -4 },
+      { "gamma": 1.07 }
+    ]
+  },{
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      { "visibility": "on" },
+      { "weight": 0.5 },
+      { "color": "#237278" },
+      { "lightness": 10 }
+    ]
+  },{
+    "featureType": "poi.business",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "poi.government",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  }
+]
