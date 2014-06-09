@@ -126,12 +126,12 @@ p,li{
   left:0;
   right:40px;
   text-align:right;
-  color:#fff2d9;
+  color:#ffffff;
   font-family:'Lato', sans-serif;
   text-transform:uppercase;
   font-size:12px;
   top:125px;
-  font-weight: 300;
+  font-weight:bold;
 }
 /*********************** menu ***********************/
 #menu{
