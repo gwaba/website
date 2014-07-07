@@ -2,15 +2,15 @@ var LAT = 43.084126;
 var LONG = -89.3626029;
 var ZOOM = 17;
 
-var MEMBER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/0/public/basic?alt=json-in-script&callback=?";
-var MEMBER_EXTENDED_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/262201806/public/basic?alt=json-in-script&callback=?";
-var MEMBER_CATEGORIES_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/934897192/public/basic?alt=json-in-script&callback=?";
-var EVENT_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1L-Q-SoZ4If8TMuQzbnz5mFcnRJ_BcAVcerv-Z80YtW4/0/public/basic?alt=json-in-script&callback=?";
-var WELCOME_PAGE_URL = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/0/public/basic?alt=json-in-script&callback=?";
-var MEMBERSHIP_PAGE_URL  = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/153417301/public/basic?alt=json-in-script&callback=?";
-var CONTACT_PAGE_URL  = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/1421411393/public/basic?alt=json-in-script&callback=?";
-var BANNER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1Sa-XkixccqJHAJc4zv7JrOG-7hldnIJoePaf7k5JdkM/0/public/basic?alt=json-in-script&callback=?";
-var FOOTER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1Sa-XkixccqJHAJc4zv7JrOG-7hldnIJoePaf7k5JdkM/879836599/public/basic?alt=json-in-script&callback=?";
+var MEMBER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/1/public/basic?alt=json-in-script&callback=?";
+var MEMBER_EXTENDED_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/3/public/basic?alt=json-in-script&callback=?";
+var MEMBER_CATEGORIES_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/2/public/basic?alt=json-in-script&callback=?";
+var EVENT_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1L-Q-SoZ4If8TMuQzbnz5mFcnRJ_BcAVcerv-Z80YtW4/1/public/basic?alt=json-in-script&callback=?";
+var WELCOME_PAGE_URL = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/1/public/basic?alt=json-in-script&callback=?";
+var MEMBERSHIP_PAGE_URL  = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/2/public/basic?alt=json-in-script&callback=?";
+var CONTACT_PAGE_URL  = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/3/public/basic?alt=json-in-script&callback=?";
+var BANNER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1Sa-XkixccqJHAJc4zv7JrOG-7hldnIJoePaf7k5JdkM/1/public/basic?alt=json-in-script&callback=?";
+var FOOTER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1Sa-XkixccqJHAJc4zv7JrOG-7hldnIJoePaf7k5JdkM/2/public/basic?alt=json-in-script&callback=?";
 
 var MAP_STYLE_URL = "js/map.json";
 var FIRST_CHAR_CODE = 65; //unicdoe 'A'
