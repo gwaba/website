@@ -6,11 +6,7 @@ var MEMBER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2Eh
 var MEMBER_EXTENDED_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/3/public/basic?alt=json-in-script&callback=?";
 var MEMBER_CATEGORIES_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/2/public/basic?alt=json-in-script&callback=?";
 var EVENT_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1L-Q-SoZ4If8TMuQzbnz5mFcnRJ_BcAVcerv-Z80YtW4/1/public/basic?alt=json-in-script&callback=?";
-var WELCOME_PAGE_URL = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/1/public/basic?alt=json-in-script&callback=?";
-var MEMBERSHIP_PAGE_URL  = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/2/public/basic?alt=json-in-script&callback=?";
-var CONTACT_PAGE_URL  = "https://spreadsheets.google.com/feeds/cells/1vXwHI6fAsXJGI0RUV3HOCkoOfhAnlJU6AcCdeLZuFF0/3/public/basic?alt=json-in-script&callback=?";
 var BANNER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1Sa-XkixccqJHAJc4zv7JrOG-7hldnIJoePaf7k5JdkM/1/public/basic?alt=json-in-script&callback=?";
-var FOOTER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1Sa-XkixccqJHAJc4zv7JrOG-7hldnIJoePaf7k5JdkM/2/public/basic?alt=json-in-script&callback=?";
 
 var MAP_STYLE_URL = "js/map.json";
 var FIRST_CHAR_CODE = 65; //unicdoe 'A'
@@ -54,14 +50,7 @@ $(function(){
       $eventList = $(".events-list");
 
   
-  //get page content
-  fetchSheet(WELCOME_PAGE_URL,pages.welcome,function(){
-     $(".headline.about h1").text(pages.welcome[0].title);
-     $(".headline.about p").text(pages.welcome[0].text);
-     $(".headline.about .explore-form h3").text(pages.welcome[0].linktitle);
-     $(".headline.about .explore-form").attr("href", pages.welcome[0].link);
-     $(".headline.about").addClass("active");
-  });
+   $(".headline.about").addClass("active");
   
    var mapOptions = {
     zoom: ZOOM,
@@ -124,23 +113,6 @@ $(function(){
     map.setMapTypeId('map_style');
   });
   
-  fetchSheet(MEMBERSHIP_PAGE_URL,pages.membership,function(){
-     $(".headline.membership h1").text(pages.membership[0].title);
-     $(".headline.membership p").text(pages.membership[0].text);
-     $(".headline.membership .explore-form h3").text(pages.membership[0].linktitle);
-     $(".headline.membership .explore-form").attr("href", pages.membership[0].link);
-  });
-  fetchSheet(CONTACT_PAGE_URL,pages.contact,function(){
-    $contactList = $(".headline.contact ul");
-    $(".headline.contact h1").text(pages.contact[0].title);
-    $(".headline.contact h5").text(pages.contact[0].subtitle);
-    $(".headline.contact ul").append("<li>"+pages.contact[0].address+"</li>");
-    $contactList.append("<li>"+pages.contact[0].phone+"</li></br>");
-    $contactList.append("<li>"+pages.contact[0].contacttitle+"</li>");
-    $contactList.append("<li>"+pages.contact[0].contact+"</li></br>");
-    $contactList.append("<li><a class='contact' href='mailto:"+pages.contact[0].email+"'>"+pages.contact[0].email+"</a></li>");
-  });
-
   //get member categories
   fetchSheet(MEMBER_CATEGORIES_URL,categories,function(){
     //categories loaded
@@ -226,15 +198,6 @@ $(function(){
       $eventList.append($event);
       $event.css("opacity",1);
    });
-  });
-  
-  //get footer data
-  fetchSheet(FOOTER_DATA_URL,footer,function(){
-    var $footerList = $footer.find("ul");
-    $footerList.append("<li>"+footer[0].business+"</li>");
-    $footerList.append("<li>"+footer[0].address+"</li>");
-    $footerList.append("<li><a href='tel:"+footer[0].phone.replace(/[A-Za-z.-]/g, "")+"'>"+footer[0].phone+"</a></li>");
-    $footerList.append("<li><a href='mailto:"+footer[0].email+"'>"+footer[0].email+"</a></li>");
   });
   
   //called once members data is fully populated
