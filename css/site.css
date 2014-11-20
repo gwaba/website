@@ -441,8 +441,8 @@ p.description{
   margin-left:-34px;
   text-align:right;
 }
-.info li, 
-.desc, 
+.info li,
+.desc,
 .marker-details li{
   font-size:12px;
 }
@@ -514,6 +514,8 @@ p.description{
 .events .info li:first-child{
   padding-bottom:0;
   white-space:nowrap;
+  width: 550px;
+  overflow: hidden;
 }
 .events .date{
   color:#e54e32;

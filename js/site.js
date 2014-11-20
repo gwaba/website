@@ -49,9 +49,9 @@ $(function(){
       $directoryList = $(".directory-list"),
       $eventList = $(".events-list");
 
-  
+
    $(".headline.about").addClass("active");
-  
+
    var mapOptions = {
     zoom: ZOOM,
     center: mapCenter,
@@ -69,7 +69,7 @@ $(function(){
     }
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-  
+
   var infowindow = new InfoBox({
     boxClass:"marker-container",
     pixelOffset: new google.maps.Size(-226, -350),
@@ -77,11 +77,11 @@ $(function(){
     disableAutoPan:true,
     closeBoxURL:"img/info_window_close.png"
   });
-  
+
   google.maps.event.addListener(infowindow,'closeclick',function(){
     closeInfoWindow();
   });
-  
+
   //get banner images
   fetchSheet(BANNER_DATA_URL,banners,function(){
     var $slideshow = $("#slideshow");
@@ -112,7 +112,7 @@ $(function(){
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
   });
-  
+
   //get member categories
   fetchSheet(MEMBER_CATEGORIES_URL,categories,function(){
     //categories loaded
@@ -147,22 +147,22 @@ $(function(){
         fetchSheet(MEMBER_EXTENDED_DATA_URL,members,membersLoaded);
     });
   });
-  
+
   //get event data
   fetchSheet(EVENT_DATA_URL,events,function(){
     var todayMonth = months[new Date().getMonth()];
     $(".events-cat li a").filter("[data-cat*='"+todayMonth+"']").addClass("selected");
-    
+
     events.sort(compareByDate);
-    
+
     //events loaded
     events.forEach(function(e){
-      
+
       var startDate = !e.startdate ? new Date() : new Date(e.startdate);
       var startMonth = months[startDate.getMonth()];
       var date = weekdays[startDate.getDay()]+", "+startMonth+" "+startDate.getDate();
       e.month = startMonth;
-      
+
       //Massage Data
       if (e.enddate){
         var endDate = new Date(e.enddate)
@@ -172,18 +172,18 @@ $(function(){
         e.month += ","+endMonth;
       }
       date += ", "+startDate.getFullYear();
-      
+
       if(!e.thumbnail) e.thumbnail = defaultImage;
       e.show = e.month.indexOf(todayMonth) == -1 ? "" : "show";
-      
+
       e.title = !e.title ? "" : e.title;
       e.location = !e.location ? "" : e.location;
       e.time = !e.time ? "<a class='event-hours' target='_blank' href='"+e.viewhourslink+"'>View Hours</a>" : "Time: "+e.time;
       e.description = !e.description ? "" : e.description;
       e.href = e.url.length != 0 && e.url.indexOf("http://") == -1 ? "http://"+e.url : e.url;
-      
+
       var classExtend = e.description == "" ? "extend" : "";
-      
+
       var $event = $("<li data-cat='"+e.month+"' class='"+e.show+"'>"+
                        "<img class='photo' src='"+e.thumbnail+"'></img>" +
                        "<ul class='info'>" +
@@ -199,40 +199,40 @@ $(function(){
       $event.css("opacity",1);
    });
   });
-  
+
   //called once members data is fully populated
   function membersLoaded(){
 
         //load markers based on extented data and lat/log
         var activeCat = $("ul.directory-cat .selected").data("cat");
-  
+
         //sort alphebetically first
         members.sort(compare);
-  
+
         members.forEach(function(m,i){
           m.latitude = parseFloat(m.latitude);
           m.longitude = parseFloat(m.longitude);
-          
+
           /*For a later date
           m.googleplace = jQuery.parseJSON(m.googleplace);*/
-          
+
           //numeric label
           m.id = i++;
-          
+
           if (!m.latitude || !m.longitude){
             m.latitude = DEFAULT_LAT;
             m.longitude = DEFAULT_LOG;
           }
-    
+
           var p = new google.maps.LatLng(m.latitude,m.longitude);
-            
+
           m.marker = {};
           m.marker.plain = new google.maps.Marker({ map:map, position:p, animation:google.maps.Animation.DROP, icon:markerDefaultImg,clickable: true, visible:true});
           m.marker.labelled = new MarkerWithLabel({map:map, position:p, icon:markerImg, labelInBackground:false, labelClass:"marker-label-labelled",visible:false });
           m.marker.selected = new MarkerWithLabel({map:map, position:p, icon:markerSelectedImg, labelInBackground:false, labelClass:"marker-label-selected",visible:false });
           google.maps.event.addListener(m.marker.plain, 'click', function(){ memberSelected(m); });
           google.maps.event.addListener(m.marker.labelled, 'click', function(){ memberSelected(m); });
-        
+
           //Massage Data
           if(m.categories){
             var cats = m.categories.split(",");
@@ -242,10 +242,11 @@ $(function(){
             });
           }
           else m.categories = "";
-            
+
           m.show = m.categories.indexOf(activeCat) == -1 ? "" : "show";
+          console.log(m.thumbnail);
           if(!m.thumbnail || m.thumbnail == ERROR) m.thumbnail = defaultImage;
-            
+
           m.title = !m.title ? "" : m.title;
           m.address = !m.address ? "" : m.address;
           m.address2 = !m.address2 ? "" : m.address2;
@@ -261,7 +262,7 @@ $(function(){
           m.sunday = m.detailhours.length == 0  ? "" : m.detailhours.toLowerCase().split(weekdays[0])[1];
           m.url = !m.url ? "" : m.url;
           m.href = m.url.length != 0 && m.url.indexOf("http://") == -1 ? "http://"+m.url : m.url;
-        
+
           var $dir = $("<li id='"+m.id+"' data-cat='"+m.categories+"' class='"+m.show+"'>" +
                           "<img class='photo' src='"+m.thumbnail+"'>" +
                           "<ul class='info'>" +
@@ -274,7 +275,7 @@ $(function(){
           $directoryList.append($dir);
           $dir.css("opacity", 1);
         });
-  
+
     $(".directory .info li:first-child, .directory .photo").click(function(){
         var $member = $(this).closest(".directory-list > li");
         members.forEach(function(m){
@@ -282,12 +283,12 @@ $(function(){
         });
     });
  }
- 
+
  function memberSelected(m){
   if(selectedMember) selectedMember.marker.selected.setVisible(false);
   selectedMember = m;
   m.marker.selected.setVisible(true);
-  
+
   var monStr = m.monday.length == 0 ? "" : "<li>Monday:<span class='hours'>"+m.monday+"</span></li>";
   var tuesStr = m.tuesday.length == 0 ? "" : "<li>Tuesday:<span class='hours'>"+m.tuesday+"</span></li>";
   var wedStr = m.wednesday.length == 0 ? "" : "<li>Wednesday:<span class='hours'>"+m.wednesday+"</span></li>";
@@ -296,7 +297,7 @@ $(function(){
   var satStr = m.saturday.length == 0 ? "" : "<li>Saturday:<span class='hours'>"+m.saturday+"</span></li>";
   var sunStr = m.sunday.length == 0 ? "" : "<li>Sunday:<span class='hours'>"+m.sunday+"</span></li>";
   var hourStr = monStr + tuesStr + wedStr + thurStr + friStr + satStr + sunStr;
-  
+
   var descriptionStr = !m.description ? "" : "<p class='description'>"+m.description+"</p>";
 
   infowindow.setContent("<div class='marker-content'>" +
@@ -309,12 +310,12 @@ $(function(){
                           "</ul>" +
                           "<ul class='marker-details right'>"+descriptionStr+"</ul>" +
                         "</div>");
-  
+
   infowindow.open(map, m.marker.selected);
-  
+
   var $activeMember = $(".directory-list #"+m.id);
   $(".directory-list > li.selected").removeClass("selected");
-  
+
   if ($activeMember.length != 0){
       var $directory = $(".directory-list");
       $activeMember.addClass("selected");
@@ -322,9 +323,9 @@ $(function(){
         scrollTop: $activeMember.offset().top - $directory.offset().top + $directory.scrollTop()
       },400);
   };
-  
+
   map.setCenter(m.marker.selected.position);
-  
+
   if ($(".headline.active").hasClass("contact"))
     map.panBy(LEFT_PAN_IN_PIXELS,DOWN_PAN_IN_PIXELS);
   else if ($(".headline.active").hasClass("directory"))
@@ -332,7 +333,7 @@ $(function(){
   else
     map.panBy(RIGHT_PAN_IN_PIXELS,DOWN_PAN_IN_PIXELS);
  }
- 
+
   //read Google Sheet data into an array
   function fetchSheet(url,array,callback){
     $.getJSON(url,function(json){
@@ -340,7 +341,7 @@ $(function(){
       if(typeof(callback) == "function") callback();
     });
   }
-  
+
   //parse cell data into array
   function parseJSON(json,array){
     var data = getCellData(json.feed.entry);
@@ -357,7 +358,7 @@ $(function(){
       if(!Object.keys(array[i]).length) array.pop(i);
     }
   }
-  
+
   //returns data[row][column] from Google JSON cell format
   function getCellData(cells){
     var data = [];
@@ -371,7 +372,7 @@ $(function(){
     });
     return data;
   }
-  
+
   function closeInfoWindow(){
     if(selectedMember) selectedMember.marker.selected.setVisible(false);
     $(".directory-list > li.selected").removeClass("selected");
@@ -398,15 +399,15 @@ $(function(){
        map.setZoom(ZOOM);
      }
   });
-  
+
   $("#logo").click(function(){
     $("#menu-list .about").trigger("click");
   });
-  
+
   $(".explore-form:not(.download)").click(function(){
      $("#menu-list .directory").trigger("click");
   });
-  
+
   window.onresize = function(e){
      var footerHeight = $footer.outerHeight();
      $headlines.each(function(i,h){
@@ -481,7 +482,7 @@ $(function(){
         m.marker.labelled.labelContent = m.marker.selected.labelContent = "B" + getChar(reset);
         m.marker.labelled.labelAnchor = m.marker.selected.labelAnchor = twoLetterlabelAnchor;
     }
-    
+
     $(".directory #"+m.id).find(".label").text(m.marker.labelled.labelContent+". ");
  }
 
@@ -508,17 +509,13 @@ $(function(){
         return -1;
     if (!b.startdate)
         return 1;
-     
+
     var aStartDate = new Date(a.startdate);
     var bStartDate = new Date(b.startdate);
-    
+
     if (aStartDate <  bStartDate)
       return -1;
     if (aStartDate > bStartDate)
       return 1;
     return 0;
  }
-
-
-
-
