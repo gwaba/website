@@ -331,6 +331,7 @@ p.description{
   font-size:12px;
   overflow:hidden;
   text-overflow:ellipsis;
+  width:210px;
 }
 .marker-details.right{
   padding-left:24px;
