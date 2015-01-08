@@ -178,13 +178,14 @@ p,li{
   transition:top .25s;
   top:0px;
 }
-.headline.about{
+.headline.home{
   background-image:url('../img/headline_left.png');
   width:733px;
   height:474px;
   display:block;
 }
-.headline.membership{
+.headline.membership,
+.headline.about{
   background-image:url('../img/headline_center.png');
   height:470px;
   width:951px;
@@ -233,7 +234,7 @@ p,li{
   width:407px;
   pointer-events:auto;
 }
-.headline.about .headline-interior{
+.headline.home .headline-interior{
   margin-left:48px;
 }
 .headline.contact .headline-interior{
@@ -241,7 +242,9 @@ p,li{
   text-align:left;
 }
 .headline.membership .headline-interior,
-.headline.membership .explore-form{
+.headline.membership .explore-form,
+.headline.about .headline-interior,
+.headline.about .explore-form{
   margin:0 auto;
   padding-right:30px;
   right:0;
@@ -252,7 +255,7 @@ p,li{
   top:306px;
   width:130px;
 }
-.headline.about .explore-form{
+.headline.home .explore-form{
   left:178px;
 }
 .explore-form h3{
@@ -260,26 +263,33 @@ p,li{
   padding:5px 0px;
 }
 .headline h1{
-  margin-top:65px;
+  margin-top:50px;
 }
 .headline.directory h1,
-.headline.events h1{
+.headline.events h1,
+.headline.events p,
+.headline.directory p{
   margin-right:auto;
   margin-left:auto;
-  border-bottom:solid 2px;
-  width: 348px;
-  padding-bottom:12px;
+  width:348px;
+  padding-bottom:17px;
 }
-.headline.events h1{
-  width:300px;
+.headline.events p,
+.headline.directory{
+   padding:0px;
 }
 .headline-interior p{
   padding:17px 0px;
+}
+.headline p a{
+   text-decoration:underline;
+   color:#125055;
 }
 .headline-interior .contact{
   color:#f26522;
   text-decoration:underline;
 }
+
 /*********************** MAIN ***********************/
 .main{
   height:100%;
@@ -476,7 +486,7 @@ p.description{
   overflow:hidden;
   text-align:left;
   margin:0 auto;
-  padding:20px 0;
+  padding-bottom:17px;
 }
 .directory-cat li{
   text-transform: uppercase;
@@ -492,7 +502,7 @@ p.description{
 }
 /*********************** EVENTS ***********************/
 .events-cat{
-  width:300px;
+  width:348px;
   overflow:hidden;
   text-align:left;
   margin:0 auto;
@@ -507,6 +517,13 @@ p.description{
   font-weight:600;
   padding:2px 0px;
 }
+.events-cat li.middle{
+   text-align:center;
+}
+.events-cat li.last{
+   text-align:right;
+}
+
 .events-photo{
   width:156px;
   height:132px;

@@ -1,6 +1,6 @@
-var LAT = 43.084126;
-var LONG = -89.3626029;
-var ZOOM = 17;
+var LAT = 43.082;
+var LONG = -89.3675;
+var ZOOM = 16;
 
 var MEMBER_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/1/public/basic?alt=json-in-script&callback=?";
 var MEMBER_EXTENDED_DATA_URL = "https://spreadsheets.google.com/feeds/cells/1pCnejtPSK2EhoOlgPM03w09oQketOf9y0h0X-hpmrrU/3/public/basic?alt=json-in-script&callback=?";
@@ -47,10 +47,11 @@ $(function(){
   var $footer = $("#footer"),
       $headlines = $(".headline.directory, .headline.events"),
       $directoryList = $(".directory-list"),
-      $eventList = $(".events-list");
+      $eventList = $(".events-list"),
+      $home = $(".headline.home");
 
 
-   $(".headline.about").addClass("active");
+   $home.addClass("active");
 
    var mapOptions = {
     zoom: ZOOM,
@@ -244,7 +245,6 @@ $(function(){
           else m.categories = "";
 
           m.show = m.categories.indexOf(activeCat) == -1 ? "" : "show";
-          console.log(m.thumbnail);
           if(!m.thumbnail || m.thumbnail == ERROR) m.thumbnail = defaultImage;
 
           m.title = !m.title ? "" : m.title;
@@ -379,33 +379,45 @@ $(function(){
     infowindow.close();
   }
 
-  $("#menu-list a").click(function(){
+  function transitionHeadline(element){
      var $pActive = $(".headline.active");
-     var c = $(this).attr('class');
+     var c = $(element).attr('class');
      $pActive.removeClass('active');
      var pc = $pActive.attr('class').replace(/headline/g,"").replace(/\s/g,"");
      $(".headline."+c).addClass('active');
      closeInfoWindow();
      if((c == "directory" || c == "events" ) && !firstResize ) {
-       $(window).trigger( "resize" );
-       firstResize = true;
+        $(window).trigger( "resize" );
+        firstResize = true;
      }
      if(c == "directory") labelMarkers();
      else if (pc == "directory") {
-       members.forEach(function(m){
-         unlabelMarkers(m);
-       });
-       map.panTo(mapCenter);
-       map.setZoom(ZOOM);
+        members.forEach(function(m){
+           unlabelMarkers(m);
+        });
+        map.panTo(mapCenter);
+        map.setZoom(ZOOM);
      }
+  }
+
+  $("#menu-list a").click(function(){
+     transitionHeadline(this);
   });
 
   $("#logo").click(function(){
-    $("#menu-list .about").trigger("click");
+     transitionHeadline(this);
   });
 
-  $(".explore-form:not(.download)").click(function(){
+  $(".explore-form.dir").click(function(){
      $("#menu-list .directory").trigger("click");
+  });
+
+  $(".explore-form.ev").click(function(){
+     $("#menu-list .events").trigger("click");
+  });
+
+  $(".about a").click(function(){
+     $("#menu-list .membership").trigger("click");
   });
 
   window.onresize = function(e){
