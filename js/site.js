@@ -179,9 +179,17 @@ $(function(){
 
       e.title = !e.title ? "" : e.title;
       e.location = !e.location ? "" : e.location;
-      e.time = !e.time ? "<a class='event-hours' target='_blank' href='"+e.viewhourslink+"'>View Hours</a>" : "Time: "+e.time;
+
+      if(e.time) e.time = !e.time ? "<a class='event-hours' target='_blank' href='"+e.viewhourslink+"'>View Hours</a>" : "Time: "+e.time;
+      else e.time = "";
+
       e.description = !e.description ? "" : e.description;
-      e.href = e.url.length != 0 && e.url.indexOf("http://") == -1 ? "http://"+e.url : e.url;
+
+      if(e.href) e.href = e.url && e.url.indexOf("http://") == -1 ? "http://"+e.url : e.url;
+      else {
+         e.href = "";
+         e.url = "";
+      }
 
       var classExtend = e.description == "" ? "extend" : "";
 
@@ -349,10 +357,11 @@ $(function(){
     var columns = data[0]; //first row contains labels
     for(var row = 1; row < data.length; row++){
       var i = row-1;
+      if (typeof data[row] === 'undefined' || typeof data[row][0] === 'undefined') break;
       if(!array[i]) array[i] = {};
       for(var col = 0; col < columns.length; col++){
         var label = columns[col].toLowerCase().replace(/\W/g,'');
-        var value = data[row][col];
+        value = data[row][col];
         if(value) array[i][label] = value;
       }
       if(!Object.keys(array[i]).length) array.pop(i);
@@ -416,7 +425,7 @@ $(function(){
      $("#menu-list .events").trigger("click");
   });
 
-  $(".about a").click(function(){
+  $(".about p a").click(function(){
      $("#menu-list .membership").trigger("click");
   });
 

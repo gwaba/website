@@ -267,14 +267,14 @@ p,li{
 }
 .headline.directory h1,
 .headline.events h1,
-.headline.events p,
+.headline.events p:not(.desc),
 .headline.directory p{
   margin-right:auto;
   margin-left:auto;
   width:348px;
   padding-bottom:17px;
 }
-.headline.events p,
+.headline.events p:not(.desc),
 .headline.directory{
    padding:0px;
 }
